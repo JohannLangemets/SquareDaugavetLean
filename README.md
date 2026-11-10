@@ -8,6 +8,7 @@ squares of rank-one operators*.
 | Result | Lean name | Status |
 |---|---|---|
 | Theorem 2.6 (negative square point ⇔ Daugavet point) | `SquareDaugavet.isNegativeSquarePoint_iff_isDaugavetPoint` | proved |
+| Proposition 3.2 (∇-point ⇒ positive square point) | `SquareDaugavet.isPositiveSquarePoint_of_isNablaPoint` | proved |
 
 ## Building
 

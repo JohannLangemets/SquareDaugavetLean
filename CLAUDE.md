@@ -16,13 +16,15 @@ original lives in `C:\Users\johann1\OneDrive - Tartu Ülikool\SquareDaugavetLean
 - `SquareDaugavet/Basic.lean` — definitions (`IsGood`, `IsDaugavetPoint`,
   `IsNegativeSquarePoint`) and helper `abs_apply_le_norm`.
 - `SquareDaugavet/NegativeSquarePoint.lean` — Theorem 2.6 (proved, no sorry).
+- `SquareDaugavet/NablaPoint.lean` — Proposition 3.2 (proved, no sorry). `slice`, `IsNablaPoint`,
+  `IsPositiveSquarePoint` live in Basic.lean; ∇-point uses the literal `sSup` (Real.sSup ∅ = 0).
 - New results: one file per result, imported from `SquareDaugavet.lean`; update the README table.
 - Conventions: real normed space `X`, dual is `StrongDual ℝ X`; Banach-space results take
   `[CompleteSpace X]`; unit sphere written as `‖x‖ = 1`.
 
 ## Status / next
-- Done: Theorem 2.6.
-- Candidates next: Proposition 3.3 (∇-point ⇒ positive square point), Example 3.5 (ℓ∞²).
+- Done: Theorem 2.6, Proposition 3.2.
+- Candidates next: Example 3.4 (ℓ∞²), Example 3.5.
 - Theorem 2.2 / Corollary 2.7 depend on cited results (Prop. 2.1 from KMM2007, KSSW Lemma 2.2):
   decide with the author whether to formalize them or take them as explicit hypotheses.
 

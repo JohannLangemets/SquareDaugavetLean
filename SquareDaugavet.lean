@@ -1,2 +1,3 @@
 import SquareDaugavet.Basic
 import SquareDaugavet.NegativeSquarePoint
+import SquareDaugavet.NablaPoint
