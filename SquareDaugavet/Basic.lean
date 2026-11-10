@@ -1,4 +1,9 @@
-import Mathlib
+import Mathlib.Analysis.Normed.Module.HahnBanach
+import Mathlib.Algebra.Order.Archimedean.Real.Basic
+import Mathlib.Tactic.Abel
+import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.NormNum
+import Mathlib.Tactic.Set
 
 /-!
 # Basic definitions
@@ -9,6 +14,8 @@ rank-one operators*, Section 2.
 We work in a real normed space `X` (completeness is never needed for these definitions).
 The dual space `X*` is `StrongDual ℝ X`, i.e. continuous linear maps `X →L[ℝ] ℝ`
 with the operator norm.
+
+We import only the Mathlib modules we need, not all of `Mathlib`: builds are much faster.
 -/
 
 namespace SquareDaugavet

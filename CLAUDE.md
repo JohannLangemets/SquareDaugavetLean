@@ -30,8 +30,9 @@ original lives in `C:\Users\johann1\OneDrive - Tartu Ülikool\SquareDaugavetLean
 
 ## Environment gotchas (Windows)
 - elan is not on PATH in existing shells: prefix with `$env:PATH = "$env:USERPROFILE\.elan\bin;$env:PATH"`.
-- A build that re-imports Mathlib takes ~10 min here (Defender scanning + low RAM; no admin
-  rights for exclusions). Run `lake build` in the background and batch fixes per build.
+- Imports are narrow (see top of `Basic.lean`), not `import Mathlib`: a full rebuild dropped from
+  ~14 min to ~4 min (cold) / <1 min (warm). If a lemma or tactic is missing, add the specific
+  Mathlib module to `Basic.lean` rather than going back to `import Mathlib`.
   GitHub Actions CI (`.github/workflows/lean_action_ci.yml`) also builds on every push.
 - Never write files with PowerShell 5.1 `Set-Content -Encoding utf8` — it adds a BOM, which Lean
   rejects (`expected token` at 1:0).
