@@ -1,7 +1,8 @@
 # SquareDaugavet
 
 Lean 4 / Mathlib formalization of J. Langemets, *Characterizing the Daugavet property by
-squares of rank-one operators*.
+squares of rank-one operators*
+([doi:10.48550/arXiv.2609.27693](https://doi.org/10.48550/arXiv.2609.27693)).
 
 ## Status
 
