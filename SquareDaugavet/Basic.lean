@@ -49,7 +49,17 @@ The paper uses it for `f ∈ S_{X*}` and `α > 0`; those conditions are imposed 
 def slice (f : StrongDual ℝ X) (α : ℝ) : Set X :=
   {y | ‖y‖ ≤ 1 ∧ 1 - α < f y}
 
-/-- Definition in Section 3 (from [HLPV2024]): `x ∈ S_X` is a *∇-point* if
+lemma mem_slice {f : StrongDual ℝ X} {α : ℝ} {y : X} :
+    y ∈ slice f α ↔ ‖y‖ ≤ 1 ∧ 1 - α < f y :=
+  Iff.rfl
+
+/-- Definition 3.1 (from [AHLP2020]): `x ∈ S_X` is a *Δ-point* if
+`sup_{y ∈ S} ‖x - y‖ = 2` for every slice `S = S(f, α)` of `B_X` containing `x`. -/
+def IsDeltaPoint (x : X) : Prop :=
+  ‖x‖ = 1 ∧ ∀ f : StrongDual ℝ X, ‖f‖ = 1 → ∀ α > 0, x ∈ slice f α →
+    sSup ((fun y => ‖x - y‖) '' slice f α) = 2
+
+/-- Definition 3.1 (from [HLPV2024]): `x ∈ S_X` is a *∇-point* if
 `sup_{y ∈ S} ‖x - y‖ = 2` for every slice `S = S(f, α)` of `B_X` not containing `x`.
 
 `sSup` on `ℝ` returns `0` for empty or unbounded sets; neither happens here, since slices with

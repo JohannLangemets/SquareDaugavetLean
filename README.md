@@ -10,6 +10,7 @@ squares of rank-one operators*
 |---|---|---|
 | Theorem 2.6 (negative square point ⇔ Daugavet point) | `SquareDaugavet.isNegativeSquarePoint_iff_isDaugavetPoint` | proved |
 | Proposition 3.2 (∇-point ⇒ positive square point) | `SquareDaugavet.isPositiveSquarePoint_of_isNablaPoint` | proved |
+| Example 3.4 (in ℓ∞², `(1, 0)` is a positive square point, neither ∇- nor Δ-point) | `SquareDaugavet.ex_linfty` | proved |
 
 ## Building
 
