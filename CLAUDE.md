@@ -21,8 +21,9 @@ original lives in `C:\Users\johann1\OneDrive - Tartu Ülikool\SquareDaugavetLean
 - `SquareDaugavet/LinftyExample.lean` — Example 3.4; ℓ∞² is `ℝ × ℝ` (Mathlib's max norm).
   `IsDeltaPoint` and `mem_slice` are in Basic.lean.
 - New results: one file per result, imported from `SquareDaugavet.lean`; update the README table.
-- Conventions: real normed space `X`, dual is `StrongDual ℝ X`; Banach-space results take
-  `[CompleteSpace X]`; unit sphere written as `‖x‖ = 1`.
+- Conventions: real normed space `X`, dual is `StrongDual ℝ X`; no `[CompleteSpace X]`: the
+  author asked to drop it everywhere, since all proofs work in normed spaces (docstrings note that
+  the paper assumes Banach); unit sphere written as `‖x‖ = 1`.
 
 ## Status / next
 - Done: Theorem 2.2 core (good-pair form, `PositiveGlobal.lean`), Theorem 2.6, Proposition 3.2,
@@ -32,8 +33,9 @@ original lives in `C:\Users\johann1\OneDrive - Tartu Ülikool\SquareDaugavetLean
   (rank-one = `finrank ℝ (LinearMap.range (T : X →ₗ[ℝ] X)) = 1`, `f ⊗ x` = `f.smulRight x`,
   `Id` = `1`, `T²` = `T ^ 2`). The author asked that proofs of cited results mimic the original
   article (KMM: S = (σf(x))^{-1/2} f⊗x, closure/approximation for f(x) = 0).
-- Next: Theorem 2.2 in literal operator form (from the core + `kmm_signed` + KSSW), then
-  Cor. 2.7, Cor. 2.4 (extremely non-complex), Remarks 2.3, 3.3.
+- Done: Theorem 2.2 in operator form (`hasSquareDaugavetProperty_one_iff_hasDaugavetProperty`,
+  end of `PositiveGlobal.lean`, which imports `KMM.lean`). TFAE indices start at 1 (`hK.out 1 3`).
+- Next: Cor. 2.7, Cor. 2.4 (extremely non-complex), Remarks 2.3, 3.3; later Example 3.5.
 - Later: Example 3.5 (c ⊕₂ ℝ: Δ-point, not positive square point).
 
 ## Environment gotchas (Windows)

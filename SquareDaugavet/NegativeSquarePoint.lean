@@ -8,9 +8,10 @@ namespace SquareDaugavet
 
 variable {X : Type*} [NormedAddCommGroup X] [NormedSpace ℝ X]
 
-/-- **Theorem 2.6.** Let `X` be a Banach space. An element `x ∈ S_X` is a negative square
-point if and only if it is a Daugavet point. -/
-theorem isNegativeSquarePoint_iff_isDaugavetPoint [CompleteSpace X] (x : X) :
+/-- **Theorem 2.6.** Let `X` be a real normed space. An element `x ∈ S_X` is a negative square
+point if and only if it is a Daugavet point. (The paper assumes `X` Banach; completeness is not
+needed.) -/
+theorem isNegativeSquarePoint_iff_isDaugavetPoint (x : X) :
     IsNegativeSquarePoint x ↔ IsDaugavetPoint x := by
   constructor
   swap

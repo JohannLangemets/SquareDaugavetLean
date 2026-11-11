@@ -1,4 +1,4 @@
-import SquareDaugavet.Basic
+import SquareDaugavet.KMM
 
 /-!
 # The positive square property forces the Daugavet property (core of Theorem 2.2)
@@ -159,5 +159,30 @@ theorem isDaugavetPoint_of_forall_isPositiveSquarePoint
           _ < 1 / 2 := by linarith
       exact hAU v hvS (isGood_of_norm_sub_lt_half h hf hz hzf hvS hvz)
   exact hUA x hx (hsub (mem_sphere_zero_iff_norm.mpr hx))
+
+/-- **Theorem 2.2.** Let `X` be a real normed space with `dim X > 1`. Then `X` has the positive
+square Daugavet property if and only if it has the Daugavet property. (The paper assumes `X`
+Banach; completeness is not needed.) -/
+theorem hasSquareDaugavetProperty_one_iff_hasDaugavetProperty
+    (hdim : 1 < Module.rank ℝ X) :
+    HasSquareDaugavetProperty X 1 ↔ HasDaugavetProperty X := by
+  -- `dim X > 1` gives `X ≠ {0}`, which Proposition 2.1 needs.
+  have : Nontrivial X := rank_pos_iff_nontrivial.mp (zero_lt_one.trans hdim)
+  -- Proposition 2.1 with `σ = 1`; `hK.out 1 3` is its equivalence (i) ⇔ (iii).
+  have hK := kmm_signed (X := X) (σ := 1) (Or.inl rfl)
+  -- KSSW Lemma 2.2: the Daugavet property means that every normalized pair is good.
+  rw [hasDaugavetProperty_iff_forall_isGood]
+  constructor
+  · -- By Proposition 2.1, every point of `S_X` is a positive square point; by the core result,
+    -- every point of `S_X` is a Daugavet point.
+    intro hsq
+    have h3 := (hK.out 1 3).mp hsq
+    have hpos : ∀ z : X, ‖z‖ = 1 → IsPositiveSquarePoint z := fun z hz =>
+      ⟨hz, fun f hf hfz => h3 z hz f hf (by rwa [one_mul])⟩
+    intro x hx f hf
+    exact (isDaugavetPoint_of_forall_isPositiveSquarePoint hdim hpos x hx).2 f hf
+  · -- "Clearly": if every normalized pair is good, so is every pair with `f(x) ≥ 0`.
+    intro hgood
+    exact (hK.out 1 3).mpr fun x hx f hf _ => hgood x hx f hf
 
 end SquareDaugavet

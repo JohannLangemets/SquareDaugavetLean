@@ -338,12 +338,13 @@ lemma norm_one_add_smulRight_of_square_of_eq_zero [Nontrivial X] {σ : ℝ}
   have : (0 : ℝ) < δ := hδ
   positivity
 
-/-- **Proposition 2.1** (KMM2007, Prop. 4.9). Let `X` be a Banach space and `σ ∈ {-1, 1}`.
+/-- **Proposition 2.1** (KMM2007, Prop. 4.9). Let `X` be a nonzero real normed space and
+`σ ∈ {-1, 1}`. (The paper assumes `X` Banach; completeness is not needed.)
 The following are equivalent:
 (i) `X` has the `σ`-square Daugavet property;
 (ii) `‖Id + f ⊗ x‖ = 1 + ‖f ⊗ x‖` for all `f ∈ X*`, `x ∈ X` with `σ f(x) ≥ 0`;
 (iii) `(x, f)` is good for all `x ∈ S_X`, `f ∈ S_{X*}` with `σ f(x) ≥ 0`. -/
-theorem kmm_signed [CompleteSpace X] [Nontrivial X] {σ : ℝ} (hσ : σ = 1 ∨ σ = -1) :
+theorem kmm_signed [Nontrivial X] {σ : ℝ} (hσ : σ = 1 ∨ σ = -1) :
     List.TFAE
       [HasSquareDaugavetProperty X σ,
        ∀ (f : StrongDual ℝ X) (x : X), 0 ≤ σ * f x →

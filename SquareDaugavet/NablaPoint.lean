@@ -8,9 +8,9 @@ namespace SquareDaugavet
 
 variable {X : Type*} [NormedAddCommGroup X] [NormedSpace ℝ X]
 
-/-- **Proposition 3.2.** Let `X` be a Banach space. If `x` is a ∇-point, then `x` is a positive
-square point. -/
-theorem isPositiveSquarePoint_of_isNablaPoint [CompleteSpace X] {x : X}
+/-- **Proposition 3.2.** Let `X` be a real normed space. If `x` is a ∇-point, then `x` is a
+positive square point. (The paper assumes `X` Banach; completeness is not needed.) -/
+theorem isPositiveSquarePoint_of_isNablaPoint {x : X}
     (hx : IsNablaPoint x) : IsPositiveSquarePoint x := by
   obtain ⟨hx1, hnabla⟩ := hx
   refine ⟨hx1, fun f hf hfx => ?_⟩
