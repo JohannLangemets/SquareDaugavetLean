@@ -15,7 +15,10 @@ no proof uses completeness.
 | KSSW2000, Lemma 2.2 (Daugavet property ⇔ every normalized pair is good) | `SquareDaugavet.hasDaugavetProperty_iff_forall_isGood` | proved |
 | Theorem 2.2 (dim X > 1: positive square Daugavet property ⇔ Daugavet property) | `SquareDaugavet.hasSquareDaugavetProperty_one_iff_hasDaugavetProperty` | proved |
 | Theorem 2.2, core (dim X > 1, every point of S_X a positive square point ⇒ every point a Daugavet point) | `SquareDaugavet.isDaugavetPoint_of_forall_isPositiveSquarePoint` | proved |
+| Remark 2.3 (ℝ is extremely non-complex, has the positive square Daugavet property, not the Daugavet property) | `SquareDaugavet.real_isExtremelyNonComplex_not_hasDaugavetProperty` | proved |
+| Corollary 2.4 (extremely non-complex, dim X > 1 ⇒ Daugavet property) | `SquareDaugavet.hasDaugavetProperty_of_isExtremelyNonComplex` | proved |
 | Theorem 2.6 (negative square point ⇔ Daugavet point) | `SquareDaugavet.isNegativeSquarePoint_iff_isDaugavetPoint` | proved |
+| Corollary 2.7 (negative square Daugavet property ⇔ Daugavet property) | `SquareDaugavet.hasSquareDaugavetProperty_neg_one_iff_hasDaugavetProperty` | proved |
 | Proposition 3.2 (∇-point ⇒ positive square point) | `SquareDaugavet.isPositiveSquarePoint_of_isNablaPoint` | proved |
 | Example 3.4 (in ℓ∞², `(1, 0)` is a positive square point, neither ∇- nor Δ-point) | `SquareDaugavet.ex_linfty` | proved |
 

@@ -35,7 +35,11 @@ original lives in `C:\Users\johann1\OneDrive - Tartu Ülikool\SquareDaugavetLean
   article (KMM: S = (σf(x))^{-1/2} f⊗x, closure/approximation for f(x) = 0).
 - Done: Theorem 2.2 in operator form (`hasSquareDaugavetProperty_one_iff_hasDaugavetProperty`,
   end of `PositiveGlobal.lean`, which imports `KMM.lean`). TFAE indices start at 1 (`hK.out 1 3`).
-- Next: Cor. 2.7, Cor. 2.4 (extremely non-complex), Remarks 2.3, 3.3; later Example 3.5.
+- Done: Cor. 2.7 (end of `NegativeSquarePoint.lean`, which imports `KMM.lean`; no hypotheses at
+  all — X = {0} is vacuous).
+- Done: Remark 2.3, Cor. 2.4 and def `IsExtremelyNonComplex` (end of `PositiveGlobal.lean`).
+  Deprecated: `ContinuousLinearMap.mul_apply`/`one_apply` → `mul_apply_eq_comp`/`one_apply_eq_self`.
+- Next: Remark 3.3 (∇-points everywhere + dim > 1 ⇒ Daugavet property); later Example 3.5.
 - Later: Example 3.5 (c ⊕₂ ℝ: Δ-point, not positive square point).
 
 ## Environment gotchas (Windows)

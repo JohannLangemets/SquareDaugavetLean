@@ -1,4 +1,4 @@
-import SquareDaugavet.Basic
+import SquareDaugavet.KMM
 
 /-!
 # Negative square points are Daugavet points (Theorem 2.6)
@@ -83,5 +83,33 @@ theorem isNegativeSquarePoint_iff_isDaugavetPoint (x : X) :
   -- `f(w) = F(w) - 2g(w) > 3(1 - δ)² - 2 > 1 - 6δ > 1 - ε`, and `‖x + w‖ > 2 - δ > 2 - ε`.
   refine ⟨w, hw1, ?_, by linarith⟩
   nlinarith [sq_nonneg δ]
+
+/-- **Corollary 2.7.** A real normed space has the negative square Daugavet property if and
+only if it has the Daugavet property. (The paper assumes `X` Banach; completeness is not needed.
+Nor is `X ≠ {0}`: for `X = {0}` there are no rank-one operators and both sides hold vacuously.) -/
+theorem hasSquareDaugavetProperty_neg_one_iff_hasDaugavetProperty :
+    HasSquareDaugavetProperty X (-1) ↔ HasDaugavetProperty X := by
+  rcases subsingleton_or_nontrivial X with hX | hX
+  · -- `X = {0}`: no operator has rank one, so both properties hold vacuously.
+    have hno : ∀ T : X →L[ℝ] X, Module.finrank ℝ (LinearMap.range (T : X →ₗ[ℝ] X)) ≠ 1 := by
+      intro T hT
+      rw [Module.finrank_zero_of_subsingleton] at hT
+      exact zero_ne_one hT
+    exact ⟨fun _ T hT => absurd hT (hno T), fun _ T hT => absurd hT (hno T)⟩
+  -- Proposition 2.1 with `σ = -1`; `hK.out 1 3` is its equivalence (i) ⇔ (iii).
+  have hK := kmm_signed (X := X) (σ := -1) (Or.inr rfl)
+  -- KSSW Lemma 2.2: the Daugavet property means that every normalized pair is good.
+  rw [hasDaugavetProperty_iff_forall_isGood]
+  constructor
+  · -- By Proposition 2.1, every point of `S_X` is a negative square point; by Theorem 2.6,
+    -- every point of `S_X` is a Daugavet point.
+    intro hsq x hx f hf
+    have h3 := (hK.out 1 3).mp hsq
+    have hneg : IsNegativeSquarePoint x :=
+      ⟨hx, fun g hg hgx => h3 x hx g hg (by linarith)⟩
+    exact ((isNegativeSquarePoint_iff_isDaugavetPoint x).mp hneg).2 f hf
+  · -- "Clearly": if every normalized pair is good, so is every pair with `f(x) ≤ 0`.
+    intro hgood
+    exact (hK.out 1 3).mpr fun x hx f hf _ => hgood x hx f hf
 
 end SquareDaugavet

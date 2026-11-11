@@ -185,4 +185,48 @@ theorem hasSquareDaugavetProperty_one_iff_hasDaugavetProperty
     intro hgood
     exact (hK.out 1 3).mpr fun x hx f hf _ => hgood x hx f hf
 
+/-- `X` is *extremely non-complex*: `‖Id + T²‖ = 1 + ‖T²‖` for every bounded operator `T`. -/
+def IsExtremelyNonComplex (X : Type*) [NormedAddCommGroup X] [NormedSpace ℝ X] : Prop :=
+  ∀ T : X →L[ℝ] X, ‖1 + T ^ 2‖ = 1 + ‖T ^ 2‖
+
+/-- An extremely non-complex space has the positive square Daugavet property
+(rank-one operators are bounded operators). -/
+lemma IsExtremelyNonComplex.hasSquareDaugavetProperty_one (h : IsExtremelyNonComplex X) :
+    HasSquareDaugavetProperty X 1 := fun T _ => by
+  rw [one_smul]
+  exact h T
+
+/-- **Remark 2.3.** `ℝ` is extremely non-complex, hence has the positive square Daugavet
+property, but it does not have the Daugavet property (witnessed by `T = -Id`). -/
+theorem real_isExtremelyNonComplex_not_hasDaugavetProperty :
+    IsExtremelyNonComplex ℝ ∧ HasSquareDaugavetProperty ℝ 1 ∧ ¬ HasDaugavetProperty ℝ := by
+  have hENC : IsExtremelyNonComplex ℝ := by
+    intro T
+    -- Every operator on `ℝ` is `T = t Id` with `t = T 1`, so `T² = t² Id`.
+    have hT2 : T ^ 2 = (T 1 * T 1) • (1 : ℝ →L[ℝ] ℝ) := by
+      apply ContinuousLinearMap.ext_ring
+      rw [pow_two, mul_apply_eq_comp, smul_apply, one_apply_eq_self,
+        smul_eq_mul, mul_one]
+      simpa using map_smul T (T 1) (1 : ℝ)
+    -- `‖Id + t² Id‖ = |1 + t²| = 1 + t² = 1 + ‖t² Id‖`.
+    have hc : 0 ≤ T 1 * T 1 := mul_self_nonneg _
+    rw [hT2, show (1 : ℝ →L[ℝ] ℝ) + (T 1 * T 1) • 1 = (1 + T 1 * T 1) • (1 : ℝ →L[ℝ] ℝ) by
+        rw [add_smul, one_smul],
+      norm_smul, norm_smul, norm_one, mul_one, mul_one, Real.norm_of_nonneg hc,
+      Real.norm_of_nonneg (by linarith)]
+  refine ⟨hENC, hENC.hasSquareDaugavetProperty_one, fun hD => ?_⟩
+  -- `T = -Id` has rank one (its range is all of `ℝ`) but `‖Id + T‖ = 0 ≠ 2 = 1 + ‖T‖`.
+  have hrange : LinearMap.range ((-1 : ℝ →L[ℝ] ℝ) : ℝ →ₗ[ℝ] ℝ) = ⊤ :=
+    LinearMap.range_eq_top.mpr fun y => ⟨-y, by simp⟩
+  have h := hD (-1) (by rw [hrange, finrank_top, Module.finrank_self])
+  rw [add_neg_cancel, norm_zero, norm_neg, norm_one] at h
+  norm_num at h
+
+/-- **Corollary 2.4.** Every extremely non-complex real normed space of dimension greater than one
+has the Daugavet property. (The paper assumes `X` Banach; completeness is not needed.) -/
+theorem hasDaugavetProperty_of_isExtremelyNonComplex (hdim : 1 < Module.rank ℝ X)
+    (h : IsExtremelyNonComplex X) : HasDaugavetProperty X :=
+  (hasSquareDaugavetProperty_one_iff_hasDaugavetProperty hdim).mp
+    h.hasSquareDaugavetProperty_one
+
 end SquareDaugavet
