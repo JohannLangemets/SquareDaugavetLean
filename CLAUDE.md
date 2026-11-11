@@ -25,10 +25,16 @@ original lives in `C:\Users\johann1\OneDrive - Tartu Ülikool\SquareDaugavetLean
   `[CompleteSpace X]`; unit sphere written as `‖x‖ = 1`.
 
 ## Status / next
-- Done: Theorem 2.6, Proposition 3.2, Example 3.4.
-- Candidates next: Example 3.5 (c ⊕₂ ℝ: Δ-point, not positive square point).
-- Theorem 2.2 / Corollary 2.7 depend on cited results (Prop. 2.1 from KMM2007, KSSW Lemma 2.2):
-  decide with the author whether to formalize them or take them as explicit hypotheses.
+- Done: Theorem 2.2 core (good-pair form, `PositiveGlobal.lean`), Theorem 2.6, Proposition 3.2,
+  Example 3.4.
+- Done: Prop. 2.1 (`kmm_signed`, a `List.TFAE`) and KSSW Lemma 2.2, in `KMM.lean`, which also
+  holds the operator-level definitions `HasDaugavetProperty`, `HasSquareDaugavetProperty X σ`
+  (rank-one = `finrank ℝ (LinearMap.range (T : X →ₗ[ℝ] X)) = 1`, `f ⊗ x` = `f.smulRight x`,
+  `Id` = `1`, `T²` = `T ^ 2`). The author asked that proofs of cited results mimic the original
+  article (KMM: S = (σf(x))^{-1/2} f⊗x, closure/approximation for f(x) = 0).
+- Next: Theorem 2.2 in literal operator form (from the core + `kmm_signed` + KSSW), then
+  Cor. 2.7, Cor. 2.4 (extremely non-complex), Remarks 2.3, 3.3.
+- Later: Example 3.5 (c ⊕₂ ℝ: Δ-point, not positive square point).
 
 ## Environment gotchas (Windows)
 - elan is not on PATH in existing shells: prefix with `$env:PATH = "$env:USERPROFILE\.elan\bin;$env:PATH"`.

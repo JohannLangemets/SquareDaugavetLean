@@ -2,3 +2,5 @@ import SquareDaugavet.Basic
 import SquareDaugavet.NegativeSquarePoint
 import SquareDaugavet.NablaPoint
 import SquareDaugavet.LinftyExample
+import SquareDaugavet.PositiveGlobal
+import SquareDaugavet.KMM
