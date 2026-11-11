@@ -1,5 +1,7 @@
 import Mathlib.Analysis.Normed.Module.HahnBanach
 import Mathlib.Analysis.Normed.Module.Connected
+import Mathlib.Analysis.Normed.Lp.ProdLp
+import Mathlib.Topology.ContinuousMap.Bounded.Normed
 import Mathlib.Analysis.Normed.Operator.Bilinear
 import Mathlib.Analysis.Real.Sqrt
 import Mathlib.LinearAlgebra.FiniteDimensional.Basic

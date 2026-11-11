@@ -22,6 +22,7 @@ no proof uses completeness.
 | Proposition 3.2 (∇-point ⇒ positive square point) | `SquareDaugavet.isPositiveSquarePoint_of_isNablaPoint` | proved |
 | Remark 3.3 (dim X > 1, every point of S_X a ∇-point ⇒ Daugavet property; new proof of HLPV Thm 1.6) | `SquareDaugavet.hasDaugavetProperty_of_forall_isNablaPoint` | proved |
 | Example 3.4 (in ℓ∞², `(1, 0)` is a positive square point, neither ∇- nor Δ-point) | `SquareDaugavet.ex_linfty` | proved |
+| Example 3.5 (in c ⊕₂ ℝ, `(𝟏, 0)` is a Δ-point but not a positive square point) | `SquareDaugavet.ex_c_sum_real` | proved |
 
 ## Building
 

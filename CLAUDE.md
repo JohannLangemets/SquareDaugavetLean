@@ -40,7 +40,11 @@ original lives in `C:\Users\johann1\OneDrive - Tartu Ülikool\SquareDaugavetLean
 - Done: Remark 2.3, Cor. 2.4 and def `IsExtremelyNonComplex` (end of `PositiveGlobal.lean`).
   Deprecated: `ContinuousLinearMap.mul_apply`/`one_apply` → `mul_apply_eq_comp`/`one_apply_eq_self`.
 - Done: Remark 3.3 (end of `NablaPoint.lean`, which now imports `PositiveGlobal.lean`).
-- Next: Example 3.5 (c ⊕₂ ℝ: Δ-point, not positive square point) — the last result.
+- Done: Example 3.5 (`CSumExample.lean`): c = `convergentSeq`, a submodule of `ℕ →ᵇ ℝ`;
+  c ⊕₂ ℝ = `WithLp 2 (convergentSeq × ℝ)` (`CSum`). Weak convergence replaced by the lemma
+  `tendsto_apply_inl_e` (f(eₙ, 0) → 0 via Σ|f(eₙ, 0)| ≤ ‖f‖). Coordinates via `rfl` lemmas
+  (`coe_add_apply`, `e_apply`, …) — `simp` with coercions was unreliable there.
+- ALL numbered results of the paper are now formalized (no sorry; axioms standard only).
 - Later: Example 3.5 (c ⊕₂ ℝ: Δ-point, not positive square point).
 
 ## Environment gotchas (Windows)

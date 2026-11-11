@@ -4,3 +4,4 @@ import SquareDaugavet.NablaPoint
 import SquareDaugavet.LinftyExample
 import SquareDaugavet.PositiveGlobal
 import SquareDaugavet.KMM
+import SquareDaugavet.CSumExample
