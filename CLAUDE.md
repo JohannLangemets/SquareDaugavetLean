@@ -39,7 +39,8 @@ original lives in `C:\Users\johann1\OneDrive - Tartu Ülikool\SquareDaugavetLean
   all — X = {0} is vacuous).
 - Done: Remark 2.3, Cor. 2.4 and def `IsExtremelyNonComplex` (end of `PositiveGlobal.lean`).
   Deprecated: `ContinuousLinearMap.mul_apply`/`one_apply` → `mul_apply_eq_comp`/`one_apply_eq_self`.
-- Next: Remark 3.3 (∇-points everywhere + dim > 1 ⇒ Daugavet property); later Example 3.5.
+- Done: Remark 3.3 (end of `NablaPoint.lean`, which now imports `PositiveGlobal.lean`).
+- Next: Example 3.5 (c ⊕₂ ℝ: Δ-point, not positive square point) — the last result.
 - Later: Example 3.5 (c ⊕₂ ℝ: Δ-point, not positive square point).
 
 ## Environment gotchas (Windows)

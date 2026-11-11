@@ -1,4 +1,4 @@
-import SquareDaugavet.Basic
+import SquareDaugavet.PositiveGlobal
 
 /-!
 # ∇-points are positive square points (Proposition 3.2)
@@ -71,5 +71,22 @@ theorem isPositiveSquarePoint_of_isNablaPoint {x : X}
       calc ‖x + y‖ = ‖(x + w) - (w - y)‖ := by congr 1; abel
         _ ≤ ‖x + w‖ + ‖w - y‖ := norm_sub_le _ _
     linarith
+
+/-- **Remark 3.3** (new proof of HLPV2024, Theorem 1.6). If `dim X > 1` and every point of `S_X`
+is a ∇-point, then `X` has the Daugavet property. (The paper assumes `X` Banach; completeness is
+not needed.) -/
+theorem hasDaugavetProperty_of_forall_isNablaPoint (hdim : 1 < Module.rank ℝ X)
+    (h : ∀ x : X, ‖x‖ = 1 → IsNablaPoint x) : HasDaugavetProperty X := by
+  -- `dim X > 1` gives `X ≠ {0}`, which Proposition 2.1 needs.
+  have : Nontrivial X := rank_pos_iff_nontrivial.mp (zero_lt_one.trans hdim)
+  -- By Proposition 3.2, every point of `S_X` is a positive square point.
+  have hpos : ∀ x : X, ‖x‖ = 1 → IsPositiveSquarePoint x := fun x hx =>
+    isPositiveSquarePoint_of_isNablaPoint (h x hx)
+  -- So `X` has the positive square Daugavet property by Proposition 2.1, (iii) ⇒ (i).
+  have hsq : HasSquareDaugavetProperty X 1 :=
+    ((kmm_signed (X := X) (σ := 1) (Or.inl rfl)).out 1 3).mpr fun x hx f hf hfx =>
+      (hpos x hx).2 f hf (by linarith)
+  -- Theorem 2.2 now shows that `X` has the Daugavet property.
+  exact (hasSquareDaugavetProperty_one_iff_hasDaugavetProperty hdim).mp hsq
 
 end SquareDaugavet
