@@ -11,6 +11,7 @@ no proof uses completeness.
 
 | Result | Lean name | Status |
 |---|---|---|
+| Main Theorem (dim X > 1: Daugavet ⇔ positive square ⇔ negative square Daugavet property; extremely non-complex ⇒ Daugavet) | `SquareDaugavet.main_theorem` | proved |
 | Proposition 2.1 (KMM2007: σ-square Daugavet property ⇔ rank-one equation for σf(x) ≥ 0 ⇔ good pairs) | `SquareDaugavet.kmm_signed` | proved |
 | KSSW2000, Lemma 2.2 (Daugavet property ⇔ every normalized pair is good) | `SquareDaugavet.hasDaugavetProperty_iff_forall_isGood` | proved |
 | Theorem 2.2 (dim X > 1: positive square Daugavet property ⇔ Daugavet property) | `SquareDaugavet.hasSquareDaugavetProperty_one_iff_hasDaugavetProperty` | proved |

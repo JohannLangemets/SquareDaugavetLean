@@ -44,7 +44,10 @@ original lives in `C:\Users\johann1\OneDrive - Tartu Ülikool\SquareDaugavetLean
   c ⊕₂ ℝ = `WithLp 2 (convergentSeq × ℝ)` (`CSum`). Weak convergence replaced by the lemma
   `tendsto_apply_inl_e` (f(eₙ, 0) → 0 via Σ|f(eₙ, 0)| ≤ ‖f‖). Coordinates via `rfl` lemmas
   (`coe_add_apply`, `e_apply`, …) — `simp` with coercions was unreliable there.
-- ALL numbered results of the paper are now formalized (no sorry; axioms standard only).
+- ALL numbered results of the paper are now formalized (no sorry; axioms standard only), plus the
+  Introduction's Main Theorem (`main_theorem`, `MainTheorem.lean`, assembled from 2.2/2.7/2.4).
+- Not formalized (only quoted in the paper): Daugavet ⇒ Δ/∇-point, AHLP/HLPV strictness examples,
+  slice characterization of Daugavet points, signed square ⇒ alternative Daugavet property.
 - Later: Example 3.5 (c ⊕₂ ℝ: Δ-point, not positive square point).
 
 ## Environment gotchas (Windows)
